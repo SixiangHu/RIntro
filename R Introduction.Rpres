@@ -1,0 +1,142 @@
+R Introduction
+========================================================
+author: Sixiang Hu
+date: 30th Nov, 2014
+width: 1280
+height: 1024
+autosize: true
+
+What is R?
+========================================================
+- The R statistical programming language is a free open source package based on - the S language developed by Bell Labs. 
+- Many statistical functions are already built in.
+Contributed packages expand the functionality to cutting edge research.
+- Free
+```{r setup, include=FALSE}
+opts_chunk$set(out.width='750px', dpi=200)
+```
+
+Getting Started
+========================================================
+* Download R 3.1.2 (Pumpkin Helmet):
+  + http://cran.r-project.org/
+
+* Download RStudio (Optional):
+  + http://www.rstudio.com/products/rstudio/download/
+  + To get a beautiful user interface
+  + Easier maintains
+
+Basic Assignment and Operations
+========================================================
+* Arithmetic Operations:
+```{r}
+1+2*exp(3)/sin(4)
+```
+
+* Assignment:
+```{r}
+a <- runif(4)
+a
+```
+
+* Use help in R:
+```{r}
+?sin
+```
+
+Variables in R
+========================================================
+There are several types of variables can be used in R:
+integer, numerical, character, date, vector, matrix, list, 
+and data frame.
+
+```{r}
+a <- sample(LETTERS,5,replace=T)
+a
+class(a)
+class(data.frame(c(a=a,b=a)))
+```
+
+Data Frame
+========================================================
+Data frame is the widest used data type used in R.
+It can have different type of value in different columns, but 
+values in a column must keep the same.
+
+```{r}
+a <- c(1,2,3)
+b <- c("a","b","c")
+df <- data.frame(a=a,b=b)
+df
+df$a
+df[2,2]
+```
+
+List
+========================================================
+List can be used to store different types of variables with 
+differnet length.
+
+```{r}
+a <- c(1,2,3)
+b <- c("a","b","c")
+lt <- list(a,b)
+lt
+lt[[2]]
+```
+
+Function
+========================================================
+We can create functions that can be used repetitely:
+```{r}
+my_square <- function(x) {x*x}
+my_square(5)
+```
+
+Plot
+========================================================
+```{r,fig.width=800}
+par(mfrow=c(2,2))
+plot(cars,type="l")
+hist(cars$speed)
+plot(cars)
+hist(cars$dist)
+```
+
+Modelling
+========================================================
+```{r}
+ model1 <- glm(mpg~gear+cyl,data=mtcars,family=Gamma)
+summary(model1)
+```
+
+We can use different family and link function for GLM 
+modeling.  Interactions, offset, splines and transformation 
+are all can be done within R.
+
+For some large dataset (>100MB), it will be slow for a fit.
+Some packages `bigGLM` can be used to accelarate to process.
+
+Advanced Plot (ggplot2)
+========================================================
+```{r}
+library(ggplot2)
+library(ggthemes)
+ggplot(data = msleep, aes(x = log(bodywt), y = sleep_total)) +
+  geom_point(aes(shape=vore), size=3)+
+  theme_wsj()
+```
+
+Further Online Tutorial
+========================================================
+* R Tutorial (Statistics)
+  + http://www.r-tutor.com/
+
+* CRAN R Tutorial
+  + http://cran.r-project.org/doc/manuals/r-release/R-intro.html
+
+* Data Camp R
+  + https://www.datacamp.com/
+  
+* Kaggle
+  + https://www.kaggle.com/
