@@ -1,3 +1,14 @@
+<<<<<<< HEAD
 .Rproj.user
 .Rhistory
 .RData
+=======
+# History files
+.Rhistory
+
+# R data files from past sessions
+.Rdata
+
+# RStudio files
+.Rproj.user/
+>>>>>>> bc8cfb1eeb2968d029bcbd45b4ffb40bc5dbf317
